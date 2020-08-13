@@ -1,0 +1,80 @@
+<h3>{{errorMsg}}</h3>
+
+<div class="row">
+    <div class="col-sm-6">       
+        <ul class="list-group">
+            <li class="list-group-item"> <h1>{{name}}</h1></li>
+            <li class="list-group-item">Age: {{age}}</li>
+            <li class="list-group-item">Email: {{email}}</li>
+            <li class="list-group-item">{{address.street}} {{address.city}}, {{address.state}}</li>
+        </ul>
+    </div>
+</div>
+
+<br>
+<div class="container">
+    <button type="button" class="btn btn-warning" (click)="onClick()"> Click Me </button>
+    <button class="btn btn-secondary" float="right" (click)="toggleEdit()"> Edit User </button>
+</div>
+
+<br><br>
+<div *ngIf = isEdit>
+    <h1>Edit User</h1>
+    <form>
+        <div class="form-group">        
+            <label for="name">Name: </label>
+            <input type="text" class="form-control" [(ngModel)]="name" name="name" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+            <label for="age">Age: </label>
+            <input type="text" class="form-control" [(ngModel)]="age" name="age">
+        </div>
+        <div class="form-group">
+            <label for="Email">Email: </label>
+            <input type="email" class="form-control" [(ngModel)]="email" name="email">
+        </div>
+        <div class="form-group">
+            <label for="street">Street: </label>
+            <input type="text" class="form-control" [(ngModel)]="address.street" name="street">
+        </div>
+        <div class="form-group">
+            <label for="city">City: </label>
+            <input type="text" class="form-control" [(ngModel)]="address.city" name="city">
+        </div>
+        <div class="form-group">
+            <label for="state">State: </label>
+            <input type="text" class="form-control" [(ngModel)]="address.state" name="state">
+        </div>
+    </form>
+</div>
+
+
+<h3>Hobbies</h3>
+<form (submit)="addHobby(hobby.value)">
+    <!-- <div class="form-group"> -->
+    <div class="form-group">
+      <label for="hobby">Hobby: </label>
+      <input class="form-control" type="text" #hobby>
+    </div>
+</form>
+
+<ul class="list-group" *ngFor="let hobby of hobbies; index as i">
+    <li class="list-group-item">
+        {{i+1}} - {{hobby}}
+        <button type="button" class="btn btn-danger btn-sm" (click) = "deleteHobby(hobby)">X</button>
+    </li>
+</ul>
+
+<h1>POSTS</h1>
+    <div class="row">
+        <div class="col-sm-6">
+          <div class="card" *ngFor="let post of posts">
+            <div class="card-body">
+              <h5 class="card-title">{{post.title}}</h5>
+              <p class="card-text">{{post.body}}</p>
+              
+              <a href="#" class="btn btn-link">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+    </div>

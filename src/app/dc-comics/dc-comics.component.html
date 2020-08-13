@@ -1,0 +1,9 @@
+<div class="row">
+    <div class="col-sm-6 offset-3">
+        <ul class="list-group" (click)="onSelect(department)" [class.selected]="isSelected(department)" *ngFor="let department of departments">
+            <li class="list-group-item"><span class="badge badge-pill badge-dark">{{department.id}}</span> {{department.name}}</li>
+        </ul>
+    </div>
+</div>
+
+
